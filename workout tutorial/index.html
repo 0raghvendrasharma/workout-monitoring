@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Workout Tutorials</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        #container {
+            text-align: center;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            width: 100%;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        p {
+            color: #666;
+            line-height: 1.6;
+            margin-top: 20px;
+        }
+
+        button {
+            margin-top: 10px;
+        }
+
+        #quote {
+            font-style: italic;
+            margin-top: 20px;
+        }
+
+        #fitness-tip {
+            font-weight: bold;
+            margin-top: 30px;
+        }
+
+        #blog-section {
+            margin-top: 40px;
+            border-top: 1px solid #ccc;
+            padding-top: 20px;
+        }
+
+        #new-post-form {
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        #new-post-form textarea {
+            width: 100%;
+            margin: 10px 0;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+
+        .post-container {
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin-top: 10px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+
+<div id="container">
+    <h1>Daily Quote Generator & Blog</h1>
+    
+    <p id="quote">"Your journey to a healthier life begins with a single step. Take it now."</p>
+    <p id="fitness-tip">Fitness Tip of the Day: Drink plenty of water and stay hydrated throughout the day.</p>
+
+    <div id="blog-section">
+        <h2>Blog Section</h2>
+
+        <div id="new-post-form">
+            <h3>Create New Post</h3>
+            <textarea id="post-content" placeholder="Write your post here..."></textarea>
+            <button onclick="addNewPost()">Post</button>
+        </div>
+
+        <div id="posts">
+            <!-- Existing and new posts will be displayed here -->
+        </div>
+    </div>
+</div>
+
+<script>
+    function generateQuote() {
+        const quotes = [
+            "The only way to do great work is to love what you do. - Steve Jobs",
+            "Believe you can and you're halfway there. - Theodore Roosevelt",
+            "Your time is limited, don't waste it living someone else's life. - Steve Jobs",
+            "Success is not final, failure is not fatal: It is the courage to continue that counts. - Winston Churchill",
+            "The only limit to our realization of tomorrow will be our doubts of today. - Franklin D. Roosevelt"
+        ];
+
+        const randomIndex = Math.floor(Math.random() * quotes.length);
+        const randomQuote = quotes[randomIndex];
+
+        document.getElementById("quote").textContent = randomQuote;
+    }
+
+    function addNewPost() {
+        const postContent = document.getElementById("post-content").value;
+        if (postContent.trim() !== "") {
+            const postContainer = document.createElement("div");
+            postContainer.className = "post-container";
+
+            const postElement = document.createElement("div");
+            postElement.textContent = postContent;
+
+            postContainer.appendChild(postElement);
+
+            document.getElementById("posts").appendChild(postContainer);
+            document.getElementById("post-content").value = "";
+        }
+    }
+</script>
+
+</body>
+</html>
